@@ -37,6 +37,15 @@ input, button, textarea, select {
 #root {
   isolation: isolate;
 }
+
+.btn {
+  cursor: pointer;
+    font-weight: 700;
+    border-radius: 2px;
+    color: #fff;
+    border: transparent;
+    padding: 0.5rem 2rem;
+}
 `;
 
 export default GlobalStyle;

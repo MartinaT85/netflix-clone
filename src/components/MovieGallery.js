@@ -6,7 +6,7 @@ import styled from "styled-components";
 import FeaturedMovie from "./FeaturedMovie";
 
 const MovieGallery = () => {
-  const query = "batman";
+  const query = "sing";
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {

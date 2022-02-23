@@ -22,7 +22,7 @@ const FeaturedMovie = ({ movie }) => {
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
         <div className="featuredMovie-btn">
-          <button className="btn">Play</button>
+          <button className="btn btn-secondary">Play</button>
           <button className="btn">My List</button>
         </div>
         <p className="featuredMovie-description">
@@ -63,14 +63,8 @@ const StyledSection = styled.section`
     padding-top: 1rem;
   }
 
-  .btn {
-    cursor: pointer;
-    font-weight: 700;
-    border-radius: 2px;
-    color: #fff;
-    border: transparent;
+  .btn-secondary {
     background-color: rgba(51, 51, 51, 0.5);
-    padding: 0.5rem 2rem;
     margin-right: 1rem;
   }
 
