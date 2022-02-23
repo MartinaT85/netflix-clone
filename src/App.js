@@ -1,11 +1,12 @@
 // Global Style
+import MainScreen from "./components/MainScreen";
 import GlobalStyle from "./globalStyles/GlobalStyles";
 
 function App() {
   return (
     <div className="app">
       <GlobalStyle />
-      <h1>Hello from App</h1>
+      <MainScreen />
     </div>
   );
 }
