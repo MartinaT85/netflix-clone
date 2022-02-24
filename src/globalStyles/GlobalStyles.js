@@ -34,6 +34,8 @@ input, button, textarea, select {
   font: inherit;
 }
 
+
+
 #root {
   isolation: isolate;
 }
@@ -46,6 +48,10 @@ input, button, textarea, select {
     border: transparent;
     padding: 0.5rem 2rem;
 }
+
+.btn-primary {
+    background-color: #e50914;
+  }
 `;
 
 export default GlobalStyle;
