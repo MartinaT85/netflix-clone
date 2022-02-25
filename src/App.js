@@ -11,7 +11,7 @@ function App() {
     <div className="app">
       <GlobalStyle />
       <BrowserRouter>
-        {!user ? (
+        {user ? (
           <Routes>
             <Route path="/welcome" element={<LoginScreen />} />
           </Routes>

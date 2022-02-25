@@ -1,6 +1,19 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { auth } from "../utils/firebase";
 
 const SignUpScreen = () => {
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const registerUser = async () => {};
+
+  const signInUser = async () => {};
+
+  const logout = async () => {};
+
   return (
     <StyledDiv>
       <div className="form-container">

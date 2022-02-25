@@ -6,13 +6,14 @@ import styled from "styled-components";
 import FeaturedMovie from "./FeaturedMovie";
 
 const MovieGallery = () => {
-  const query = "sing";
+  const query = "pride and prejudice";
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(
-        `/search/movie?api_key=a7d9f7aa23bfa9fe64b50d3baee20911&language=en-US&query=${query}&page=1&include_adult=false`
+        requests.fetchNetflixOriginals
+        // `/search/movie?api_key=${process.env.REACT_APP_MOVIE_API}&language=en-US&query=${query}&page=1&include_adult=false`
       );
       setMovie(
         request.data.results[
