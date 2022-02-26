@@ -1,35 +1,17 @@
-import { useRef, useState } from "react";
 import styled from "styled-components";
-import { auth } from "../utils/firebase";
-import { useAuth } from "./context/AuthContext";
 
-const SignUp = (props) => {
-  const passwordRef = useRef();
-  const { signUp, currentUser } = useAuth;
-
-  // console.log(emailRef.current.value);
-  const [emailInput, setEmailInput] = useState(props.email);
-
+const SignIn = () => {
   return (
     <StyledDiv>
       <div className="form-container">
         <form className="signUpForm">
-          <h1>Sign Up</h1>
-          <input
-            placeholder="Email"
-            type="email"
-            defaultValue={props.email}
-            onChange={(e) => {
-              setEmailInput(e.target.value);
-            }}
-            required
-          />
-          {console.log(emailInput)}
-          <input placeholder="Password" type="password" ref={passwordRef} />
-          <button type="submit" className="submitBtn btn btn-primary" required>
-            Sign Up
+          <h1>Sign In</h1>
+          <input placeholder="Email" type="email" required />
+          <input placeholder="Password" type="password" required />
+          <button type="submit" className="submitBtn btn btn-primary">
+            Sign In
           </button>
-          <p>Already have an account? Log In</p>
+          <p>Don't have an account? Sign Up</p>
         </form>
       </div>
     </StyledDiv>
@@ -89,4 +71,4 @@ const StyledDiv = styled.div`
   }
 `;
 
-export default SignUp;
+export default SignIn;
