@@ -10,10 +10,7 @@ const MovieGallery = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(
-        requests.fetchNetflixOriginals
-        // `/search/movie?api_key=${process.env.REACT_APP_MOVIE_API}&language=en-US&query=${query}&page=1&include_adult=false`
-      );
+      const request = await axios.get(requests.fetchTrending);
       setMovie(
         request.data.results[
           Math.floor(Math.random() * request.data.results.length - 1)

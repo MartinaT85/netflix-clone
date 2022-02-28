@@ -21,12 +21,15 @@ const Navbar = () => {
             </g>
           </svg>
         </span>
-        <img
-          src={avatarImg}
-          alt="Netflix Avatar"
-          className="nav-avatar"
-          onClick={logOut}
-        />
+        {/* <img
+        src={avatarImg}
+        alt="Netflix Avatar"
+        className="nav-avatar"
+        onClick={logOut}
+      /> */}
+        <button type="button" className="btn btn-primary" onClick={logOut}>
+          Log Out
+        </button>
       </StyledNav>
     </StyledHeader>
   );

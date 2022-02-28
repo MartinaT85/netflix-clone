@@ -15,15 +15,17 @@ const FeaturedMovie = ({ movie }) => {
         }')`,
         backgroundSize: "cover",
         backgroundPosition: "top",
+        position: "relative",
       }}
     >
+      <div className="background-overlay"></div>
       <div className="featuredMovie-content">
         <h1 className="featuredMovie-title">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
         <div className="featuredMovie-btn">
           <button className="btn btn-secondary">Play</button>
-          <button className="btn">My List</button>
+          <button className="btn btn-secondary">My List</button>
         </div>
         <p className="featuredMovie-description">
           {textLength(movie?.overview, 300)}
@@ -49,6 +51,24 @@ const StyledSection = styled.section`
   .featuredMovie-content {
     width: 90%;
     margin: 0 auto;
+    z-index: 3;
+  }
+
+  .background-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
   }
 
   .featuredMovie-title {

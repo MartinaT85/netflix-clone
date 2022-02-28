@@ -81,42 +81,6 @@ const LoginScreen = () => {
             </div>
           </StyledMain>
         ) : null}
-
-        {/* {signUp ? (
-          <SignUpScreen />
-        ) : (
-          <StyledMain>
-            <div className="main-container">
-              <div className="main-txt">
-                <h1>
-                  Unlimited movies, TV
-                  <span className="h1span">shows, and more.</span>
-                </h1>
-                <h2>Watch anywhere. Cancel anytime.</h2>
-              </div>
-              <form className="form-signUp">
-                <h3>
-                  Ready to watch? Enter your email to create or restart your
-                  membership.
-                </h3>
-                <div className="flex-container">
-                  <input
-                    type="email"
-                    placeholder="Email address"
-                    className="input-signUp"
-                    ref={emailRef}
-                  />
-                  <button
-                    className="btn btn-primary btn-signUp"
-                    onClick={() => setSignUp(true)}
-                  >
-                    Get Started
-                  </button>
-                </div>
-              </form>
-            </div>
-          </StyledMain>
-        )} */}
         <div className="background-overlay"></div>
       </StyledBackground>
     </>
