@@ -1,29 +1,30 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainScreen from "./MainScreen";
-import LoginScreen from "./LoginScreen";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
+
+import IndexPage from "../pages/IndexPage";
+import LoginPage from "../pages/LoginPage";
 // Global Style
 import GlobalStyle from "../globalStyles/GlobalStyles";
-import { AuthProvider } from "./context/AuthContext";
 
 function App() {
-  const user = null;
-
+  const { user, authIsReady } = useAuthContext();
   return (
     <div className="app">
-      <GlobalStyle />
-      <BrowserRouter>
-        <AuthProvider>
-          {!user ? (
-            <Routes>
-              <Route path="/welcome" element={<LoginScreen />} />
-            </Routes>
-          ) : (
-            <Routes>
-              <Route path="/" element={<MainScreen />} />
-            </Routes>
-          )}
-        </AuthProvider>
-      </BrowserRouter>
+      {authIsReady && (
+        <BrowserRouter>
+          <GlobalStyle />
+          <Routes>
+            <Route
+              path="/"
+              element={user ? <IndexPage /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/login"
+              element={user ? <Navigate to="/" /> : <LoginPage />}
+            />
+          </Routes>
+        </BrowserRouter>
+      )}
     </div>
   );
 }

@@ -2,7 +2,6 @@ import axios from "../utils/axios";
 import requests from "../utils/requests";
 import { useEffect } from "react";
 import { useState } from "react";
-import styled from "styled-components";
 import FeaturedMovie from "./FeaturedMovie";
 
 const MovieGallery = () => {

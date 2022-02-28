@@ -1,8 +1,11 @@
 import avatarImg from "../images/Netflix-avatar.png";
-import NetflixLogo from "../images/netflix-logo.svg";
+
 import styled from "styled-components";
+import { useLogOut } from "../hooks/useLogOut";
 
 const Navbar = () => {
+  const { logOut } = useLogOut();
+
   return (
     <StyledHeader className="top-header">
       <StyledNav className="nav">
@@ -18,7 +21,12 @@ const Navbar = () => {
             </g>
           </svg>
         </span>
-        <img src={avatarImg} alt="Netflix Avatar" className="nav-avatar" />
+        <img
+          src={avatarImg}
+          alt="Netflix Avatar"
+          className="nav-avatar"
+          onClick={logOut}
+        />
       </StyledNav>
     </StyledHeader>
   );

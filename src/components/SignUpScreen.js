@@ -1,35 +1,52 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import { auth } from "../utils/firebase";
-import { useAuth } from "./context/AuthContext";
+import { useSignUp } from "../hooks/useSignUp";
 
-const SignUp = (props) => {
-  const passwordRef = useRef();
-  const { signUp, currentUser } = useAuth;
+const SignUp = ({ email }) => {
+  const [signUpEmail, setSignUpEmail] = useState({
+    userEmail: email,
+  });
 
-  // console.log(emailRef.current.value);
-  const [emailInput, setEmailInput] = useState(props.email);
+  const [signUpPassword, setSignUpPassword] = useState("");
+
+  const { signUpUser, error } = useSignUp();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signUpUser(signUpEmail.userEmail, signUpPassword);
+  };
 
   return (
     <StyledDiv>
       <div className="form-container">
-        <form className="signUpForm">
+        <form className="signUpForm" onSubmit={handleSubmit}>
           <h1>Sign Up</h1>
           <input
             placeholder="Email"
             type="email"
-            defaultValue={props.email}
+            name="userEmail"
+            defaultValue={signUpEmail.userEmail}
             onChange={(e) => {
-              setEmailInput(e.target.value);
+              setSignUpEmail((prevEmail) => ({
+                ...prevEmail,
+                userEmail: e.target.value,
+              }));
+              console.log(signUpEmail.userEmail);
             }}
             required
           />
-          {console.log(emailInput)}
-          <input placeholder="Password" type="password" ref={passwordRef} />
+          <input
+            placeholder="Password"
+            type="password"
+            onChange={(e) => {
+              setSignUpPassword(e.target.value);
+            }}
+          />
           <button type="submit" className="submitBtn btn btn-primary" required>
             Sign Up
           </button>
           <p>Already have an account? Log In</p>
+          {error && <p>{error}</p>}
         </form>
       </div>
     </StyledDiv>

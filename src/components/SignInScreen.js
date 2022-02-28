@@ -1,17 +1,42 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { useLogIn } from "../hooks/useLogIn";
 
 const SignIn = () => {
+  const [signInEmail, setSignInEmail] = useState("");
+  const [signInPassword, setSignInPassword] = useState("");
+  const { logInUser, error } = useLogIn();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    logInUser(signInEmail, signInPassword);
+  };
   return (
     <StyledDiv>
       <div className="form-container">
-        <form className="signUpForm">
+        <form className="signUpForm" onSubmit={handleSubmit}>
           <h1>Sign In</h1>
-          <input placeholder="Email" type="email" required />
-          <input placeholder="Password" type="password" required />
+          <input
+            placeholder="Email"
+            type="email"
+            required
+            onChange={(e) => {
+              setSignInEmail(e.target.value);
+            }}
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            required
+            onChange={(e) => {
+              setSignInPassword(e.target.value);
+            }}
+          />
           <button type="submit" className="submitBtn btn btn-primary">
             Sign In
           </button>
           <p>Don't have an account? Sign Up</p>
+          {error && <p>{error}</p>}
         </form>
       </div>
     </StyledDiv>
