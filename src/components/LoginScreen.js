@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import netflixLarge from "../images/netflix-large.jpg";
+import netflixMedium from "../images/netflix-medium.jpg";
+import netflixSmall from "../images/netflix-small.jpg";
 import SignUpScreen from "./SignUpScreen";
 import SignIn from "./SignInScreen";
 
@@ -25,7 +27,7 @@ const LoginScreen = () => {
           </svg>
           {signUp || signIn ? (
             <button
-              className="btn btn-primary btn-signUp"
+              className="btn btn-primary btn-signUp btn-small"
               type="submit"
               onClick={() => setSignIn(true)}
               style={{ display: "none" }}
@@ -34,7 +36,7 @@ const LoginScreen = () => {
             </button>
           ) : (
             <button
-              className="btn btn-primary btn-signUp"
+              className="btn btn-primary btn-signUp btn-small"
               type="button"
               onClick={() => setSignIn(true)}
             >
@@ -71,7 +73,7 @@ const LoginScreen = () => {
                     }}
                   />
                   <button
-                    className="btn btn-primary btn-signUp"
+                    className="btn btn-primary btn-signUp btn-cta"
                     onClick={() => setSignUp(true)}
                   >
                     Get Started
@@ -94,8 +96,8 @@ const StyledBackground = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url(${netflixLarge});
-
+  background-image: url(${netflixSmall});
+  /* background-image: url(${netflixLarge}); */
   .background-overlay {
     position: absolute;
     width: 100%;
@@ -124,9 +126,17 @@ const StyledHeader = styled.header`
   align-items: center;
 
   svg {
-    width: 8.375rem;
-    height: 2.25rem;
+    /* width: 8.375rem; */
+    width: auto;
+    /* height: 2.25rem; */
+    height: 1.5rem;
     cursor: pointer;
+  }
+
+  .btn-small {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 400;
   }
 `;
 
@@ -159,11 +169,12 @@ const StyledMain = styled.main`
   .main-txt {
     max-width: 59.4rem;
     margin: 0 auto;
-    padding: 4.38rem 0;
+    /* padding: 4.38rem 0; */
     line-height: 1.1;
 
     h1 {
-      font-size: 4rem;
+      /* font-size: 4rem; */
+      font-size: 1.75rem;
     }
 
     .h1span {
@@ -171,7 +182,8 @@ const StyledMain = styled.main`
     }
 
     h2 {
-      font-size: 1.625rem;
+      /* font-size: 1.625rem; */
+      font-size: 1.125rem;
       font-weight: 400;
       margin: 1rem auto;
     }
@@ -179,30 +191,42 @@ const StyledMain = styled.main`
 
   .form-signUp {
     h3 {
+      font-size: 1.125rem;
       padding-bottom: 1.25rem;
     }
 
     .flex-container {
-      height: 60px;
+      /* height: 60px; */
+      /* height: 10rem; */
       display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .input-signUp {
-      min-width: 31.25rem;
-      max-width: 37.5rem;
+      /* min-width: 31.25rem; */
+      min-width: 100%;
+      /* max-width: 37.5rem; */
+      padding: 1rem 0;
       padding-left: 0.75rem;
+      margin-bottom: 2rem;
       height: 100%;
       border: 1px solid transparent;
-      border-bottom-left-radius: 2px;
-      border-top-left-radius: 2px;
+      border-radius: 2px;
+      /* border-bottom-left-radius: 2px; */
+      /* border-top-left-radius: 2px; */
     }
 
     .btn-signUp {
-      height: 100%;
-      font-size: 1.875rem;
+      /* height: 100%; */
+      width: 50%;
+      /* font-size: 1.875rem; */
+      font-size: 1rem;
       font-weight: 400;
       border: 1px solid transparent;
-      border-top-left-radius: none;
-      border-bottom-left-radius: none;
+      border-radius: 2px;
+      /* border-top-left-radius: none;
+      border-bottom-left-radius: none; */
       border-left: 1px solid #000;
       transition: all 0.2s;
       background-image: linear-gradient(rgb(229, 9, 20), rgb(219, 5, 16));
