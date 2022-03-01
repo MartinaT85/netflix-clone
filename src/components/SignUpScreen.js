@@ -9,7 +9,7 @@ const SignUp = ({ email }) => {
 
   const [signUpPassword, setSignUpPassword] = useState("");
 
-  const { signUpUser, error } = useSignUp();
+  const { signUpUser } = useSignUp();
 
   const handleSubmit = (e) => {
     e.preventDefault();

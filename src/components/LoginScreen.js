@@ -258,9 +258,9 @@ const StyledMain = styled.main`
         padding-left: 0.75rem;
         height: 100%;
         margin-bottom: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
         border: 1px solid transparent;
-        border-bottom-left-radius: 2px;
-        border-top-left-radius: 2px;
       }
 
       .btn-signUp {
@@ -269,8 +269,8 @@ const StyledMain = styled.main`
         font-weight: 400;
         border: 1px solid transparent;
         border-radius: 2px;
-        border-top-left-radius: none;
-        border-bottom-left-radius: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
         border-left: 1px solid #000;
         transition: all 0.2s;
         background-image: linear-gradient(rgb(229, 9, 20), rgb(219, 5, 16));
