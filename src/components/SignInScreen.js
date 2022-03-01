@@ -1,11 +1,12 @@
 import { useState } from "react";
+
 import styled from "styled-components";
 import { useLogIn } from "../hooks/useLogIn";
 
 const SignIn = () => {
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
-  const { logInUser, error } = useLogIn();
+  const { logInUser } = useLogIn();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,8 +36,7 @@ const SignIn = () => {
           <button type="submit" className="submitBtn btn btn-primary">
             Sign In
           </button>
-          <p>Don't have an account? Sign Up</p>
-          {error && <p>{error}</p>}
+          {/* <p>Don't have an account? Sign Up</p> */}
         </form>
       </div>
     </StyledDiv>

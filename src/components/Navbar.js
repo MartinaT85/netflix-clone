@@ -27,7 +27,11 @@ const Navbar = () => {
         className="nav-avatar"
         onClick={logOut}
       /> */}
-        <button type="button" className="btn btn-primary" onClick={logOut}>
+        <button
+          type="button"
+          className="btn btn-primary btn-small"
+          onClick={logOut}
+        >
           Log Out
         </button>
       </StyledNav>
@@ -54,15 +58,18 @@ const StyledNav = styled.nav`
   align-items: center;
 
   .nav-logo {
-    width: 8.375rem;
-    height: 2.25rem;
-    cursor: pointer;
+    height: 1.5rem;
+    width: auto;
   }
 
-  .nav-avatar {
-    width: 2.25rem;
+  @media screen and (min-width: 43em) {
+    .nav-logo {
+      height: 1.85rem;
+    }
+  }
+
+  @media screen and (min-width: 62em) {
     height: 2.25rem;
-    cursor: pointer;
   }
 `;
 

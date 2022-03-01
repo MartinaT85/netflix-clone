@@ -1,8 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import netflixLarge from "../images/netflix-large.jpg";
-import netflixMedium from "../images/netflix-medium.jpg";
-import netflixSmall from "../images/netflix-small.jpg";
 import SignUpScreen from "./SignUpScreen";
 import SignIn from "./SignInScreen";
 
@@ -71,6 +69,7 @@ const LoginScreen = () => {
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
+                    required
                   />
                   <button
                     className="btn btn-primary btn-signUp btn-cta"
@@ -96,8 +95,8 @@ const StyledBackground = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url(${netflixSmall});
-  /* background-image: url(${netflixLarge}); */
+  background-image: url(${netflixLarge});
+
   .background-overlay {
     position: absolute;
     width: 100%;
@@ -126,17 +125,20 @@ const StyledHeader = styled.header`
   align-items: center;
 
   svg {
-    /* width: 8.375rem; */
     width: auto;
-    /* height: 2.25rem; */
     height: 1.5rem;
-    cursor: pointer;
   }
 
-  .btn-small {
-    font-size: 0.9rem;
-    padding: 0.25rem 0.5rem;
-    font-weight: 400;
+  @media screen and (min-width: 43em) {
+    svg {
+      height: 1.85rem;
+    }
+  }
+
+  @media screen and (min-width: 62em) {
+    svg {
+      height: 2.25rem;
+    }
   }
 `;
 
@@ -147,7 +149,6 @@ const StyledMain = styled.main`
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-image: url(${netflixLarge}); */
   display: flex;
 
   h3 {
@@ -169,11 +170,9 @@ const StyledMain = styled.main`
   .main-txt {
     max-width: 59.4rem;
     margin: 0 auto;
-    /* padding: 4.38rem 0; */
     line-height: 1.1;
 
     h1 {
-      /* font-size: 4rem; */
       font-size: 1.75rem;
     }
 
@@ -182,7 +181,6 @@ const StyledMain = styled.main`
     }
 
     h2 {
-      /* font-size: 1.625rem; */
       font-size: 1.125rem;
       font-weight: 400;
       margin: 1rem auto;
@@ -196,37 +194,26 @@ const StyledMain = styled.main`
     }
 
     .flex-container {
-      /* height: 60px; */
-      /* height: 10rem; */
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
     .input-signUp {
-      /* min-width: 31.25rem; */
-      min-width: 100%;
-      /* max-width: 37.5rem; */
       padding: 1rem 0;
       padding-left: 0.75rem;
       margin-bottom: 2rem;
       height: 100%;
       border: 1px solid transparent;
       border-radius: 2px;
-      /* border-bottom-left-radius: 2px; */
-      /* border-top-left-radius: 2px; */
     }
 
     .btn-signUp {
-      /* height: 100%; */
       width: 50%;
-      /* font-size: 1.875rem; */
       font-size: 1rem;
       font-weight: 400;
       border: 1px solid transparent;
       border-radius: 2px;
-      /* border-top-left-radius: none;
-      border-bottom-left-radius: none; */
       border-left: 1px solid #000;
       transition: all 0.2s;
       background-image: linear-gradient(rgb(229, 9, 20), rgb(219, 5, 16));
@@ -235,6 +222,58 @@ const StyledMain = styled.main`
         box-shadow: none;
         background: #f40612;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+
+  @media screen and (min-width: 43em) {
+    .main-txt {
+      h1 {
+        font-size: 3.125rem;
+      }
+
+      .h1span {
+        display: block;
+      }
+
+      h2 {
+        font-size: 1.625rem;
+      }
+    }
+  }
+
+  @media screen and (min-width: 62em) {
+    .form-signUp {
+      h3 {
+        padding-bottom: 1.25rem;
+      }
+
+      .flex-container {
+        height: 60px;
+        flex-direction: row;
+      }
+      .input-signUp {
+        min-width: 31.25rem;
+        max-width: 37.5rem;
+        padding-left: 0.75rem;
+        height: 100%;
+        margin-bottom: 0;
+        border: 1px solid transparent;
+        border-bottom-left-radius: 2px;
+        border-top-left-radius: 2px;
+      }
+
+      .btn-signUp {
+        height: 100%;
+        font-size: 1.875rem;
+        font-weight: 400;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        border-top-left-radius: none;
+        border-bottom-left-radius: none;
+        border-left: 1px solid #000;
+        transition: all 0.2s;
+        background-image: linear-gradient(rgb(229, 9, 20), rgb(219, 5, 16));
       }
     }
   }

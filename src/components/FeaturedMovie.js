@@ -45,13 +45,14 @@ const StyledSection = styled.section`
   background-repeat: no-repeat;
   color: #fff;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 
   .featuredMovie-content {
     width: 90%;
     margin: 0 auto;
     z-index: 3;
+    text-align: center;
   }
 
   .background-overlay {
@@ -72,15 +73,17 @@ const StyledSection = styled.section`
   }
 
   .featuredMovie-title {
-    font-size: 3rem;
+    font-size: 1.75rem;
     font-weight: 800;
+    margin-top: 3rem;
     padding-bottom: 0.3rem;
   }
 
   .featuredMovie-description {
-    width: 60%;
+    width: 100%;
     max-width: 45rem;
     padding-top: 1rem;
+    font-size: 1rem;
   }
 
   .btn-secondary {
@@ -107,6 +110,26 @@ const StyledSection = styled.section`
       rgba(37, 37, 37, 0.6),
       #111
     );
+  }
+
+  @media screen and (min-width: 43em) {
+    .featuredMovie-content {
+      text-align: start;
+    }
+
+    .featuredMovie-title {
+      font-size: 3rem;
+    }
+
+    .featuredMovie-description {
+      width: 70%;
+    }
+
+    @media screen and (min-width: 62em) {
+      .featuredMovie-description {
+        width: 50%;
+      }
+    }
   }
 `;
 
