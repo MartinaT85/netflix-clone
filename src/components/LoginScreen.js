@@ -200,6 +200,7 @@ const StyledMain = styled.main`
       align-items: center;
     }
     .input-signUp {
+      min-width: 100%;
       padding: 1rem 0;
       padding-left: 0.75rem;
       margin-bottom: 2rem;
