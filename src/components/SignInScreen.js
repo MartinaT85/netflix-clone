@@ -36,7 +36,6 @@ const SignIn = () => {
           <button type="submit" className="submitBtn btn btn-primary">
             Sign In
           </button>
-          {/* <p>Don't have an account? Sign Up</p> */}
         </form>
       </div>
     </StyledDiv>

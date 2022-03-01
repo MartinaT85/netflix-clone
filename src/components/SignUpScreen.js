@@ -45,8 +45,6 @@ const SignUp = ({ email }) => {
           <button type="submit" className="submitBtn btn btn-primary" required>
             Sign Up
           </button>
-          <p>Already have an account? Log In</p>
-          {error && <p>{error}</p>}
         </form>
       </div>
     </StyledDiv>
