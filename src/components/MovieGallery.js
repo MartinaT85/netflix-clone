@@ -11,16 +11,35 @@ const MovieGallery = () => {
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(requests.fetchTrending);
+      const arr = request.data.results;
+      const arrCopy = [...arr];
+
+      const shuffleArray = (array) => {
+        let oldMovie;
+        for (let i = array.length - 1; i > 0; i--) {
+          let rand = Math.floor(Math.random() * (i + 1));
+          oldMovie = array[i];
+          array[i] = array[rand];
+          array[rand] = oldMovie;
+        }
+        return array;
+      };
+      const newArr = shuffleArray(arrCopy);
+
+      const slicedArray = [...newArr].slice(0, 10);
+      console.log("sliced Array", slicedArray);
+
       setMovie(
         request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
+          Math.floor(Math.random() * request.data.results.length)
         ]
+        // slicedArray
       );
-      return request;
     }
     fetchData();
   }, []);
-  console.log(movie);
+
+  console.log("MOVIE ARRAY", movie);
 
   return (
     <main className="movieGallery">

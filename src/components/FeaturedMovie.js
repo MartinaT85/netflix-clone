@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const FeaturedMovie = ({ movie }) => {
-  console.log(movie);
+  // console.log(movie);
   function textLength(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + "..." : string;
   }
@@ -16,6 +16,8 @@ const FeaturedMovie = ({ movie }) => {
         backgroundSize: "cover",
         backgroundPosition: "top",
         position: "relative",
+        objectFit: "cover",
+        height: "70vh",
       }}
     >
       <div className="background-overlay"></div>
@@ -37,7 +39,7 @@ const FeaturedMovie = ({ movie }) => {
 };
 
 const StyledSection = styled.section`
-  max-width: 1800px;
+  /* max-width: 1800px; */
   margin: 0 auto;
   height: 28rem;
   position: relative;
