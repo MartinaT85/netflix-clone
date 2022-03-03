@@ -6,7 +6,7 @@ import FeaturedMovie from "./FeaturedMovie";
 
 const MovieGallery = () => {
   const query = "pride and prejudice";
-  const [movie, setMovie] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -27,23 +27,23 @@ const MovieGallery = () => {
       const newArr = shuffleArray(arrCopy);
 
       const slicedArray = [...newArr].slice(0, 10);
-      console.log("sliced Array", slicedArray);
+      // console.log("sliced Array", slicedArray);
 
-      setMovie(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length)
-        ]
-        // slicedArray
+      setMovies(
+        // request.data.results[
+        //   Math.floor(Math.random() * request.data.results.length)
+        // ]
+        slicedArray
       );
     }
     fetchData();
   }, []);
 
-  console.log("MOVIE ARRAY", movie);
+  console.log("MOVIE ARRAY", movies);
 
   return (
     <main className="movieGallery">
-      <FeaturedMovie movie={movie} />
+      <FeaturedMovie movies={movies} />
     </main>
   );
 };

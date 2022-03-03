@@ -1,60 +1,96 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const FeaturedMovie = ({ movie }) => {
-  // console.log(movie);
+const FeaturedMovie = ({ movies }) => {
+  const [index, setIndex] = useState(0);
+
+  console.log("Movies", movies);
   function textLength(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + "..." : string;
   }
 
+  useEffect(() => {
+    const lastIndex = movies.length - 1;
+    if (index < 0) {
+      setIndex(lastIndex);
+    }
+
+    if (index > lastIndex) {
+      setIndex(0);
+    }
+  }, [index, movies]);
+
+  useEffect(() => {
+    let slider = setInterval(() => {
+      setIndex(index + 1);
+    }, 5000);
+    return () => {
+      clearInterval(slider);
+    };
+  }, [index]);
+
   return (
-    <StyledSection
-      className="featuredMovie"
-      style={{
-        backgroundImage: `url('https://image.tmdb.org/t/p/original/${
-          movie?.backdrop_path || movie?.poster_path
-        }')`,
-        backgroundSize: "cover",
-        backgroundPosition: "top",
-        position: "relative",
-        objectFit: "cover",
-        height: "70vh",
-      }}
-    >
-      <div className="background-overlay"></div>
-      <div className="featuredMovie-content">
-        <h1 className="featuredMovie-title">
-          {movie?.title || movie?.name || movie?.original_name}
-        </h1>
-        <div className="featuredMovie-btn">
-          <button className="btn btn-secondary">Play</button>
-          <button className="btn btn-secondary">My List</button>
-        </div>
-        <p className="featuredMovie-description">
-          {textLength(movie?.overview, 300)}
-        </p>
+    <StyledSection className="section">
+      <div className="gallery-wrapper">
+        {movies.map((movie, movieIndex) => {
+          let position = "nextSlide";
+          if (movieIndex === index) {
+            position = "activeSlide";
+          }
+
+          if (
+            movieIndex === index - 1 ||
+            (index === 0 && movieIndex === movies.length - 1)
+          ) {
+            position = "lastSlide";
+          }
+          return (
+            <article
+              className={position}
+              key={movie.id}
+              style={{
+                backgroundImage: `url('https://image.tmdb.org/t/p/original/${
+                  movie?.backdrop_path || movie?.poster_path
+                }')`,
+                backgroundSize: "cover",
+                backgroundPosition: "top",
+                objectFit: "cover",
+                height: "70vh",
+              }}
+            >
+              <div className="background-overlay"></div>
+              <div className="featuredMovie-content">
+                <h1 className="featuredMovie-title">
+                  {movie?.title || movie?.name || movie?.original_name}
+                </h1>
+                <div className="featuredMovie-btn">
+                  <button className="btn btn-secondary">Play</button>
+                  <button className="btn btn-secondary">My List</button>
+                </div>
+                <p className="featuredMovie-description">
+                  {textLength(movie?.overview, 300)}
+                </p>
+              </div>
+              <div className="featuredMovie-fade"></div>
+            </article>
+          );
+        })}
       </div>
-      <div className="featuredMovie-fade"></div>
     </StyledSection>
   );
 };
 
 const StyledSection = styled.section`
-  /* max-width: 1800px; */
-  margin: 0 auto;
-  height: 28rem;
-  position: relative;
-  object-fit: contain;
-  background-repeat: no-repeat;
-  color: #fff;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  height: 70vh;
+  width: 100%;
 
-  .featuredMovie-content {
-    width: 90%;
-    margin: 0 auto;
-    z-index: 3;
-    text-align: center;
+  .gallery-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    overflow: hidden;
   }
 
   .background-overlay {
@@ -65,6 +101,7 @@ const StyledSection = styled.section`
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: -1;
     background-color: rgba(0, 0, 0, 0.4);
     background-image: linear-gradient(
       to top,
@@ -72,6 +109,18 @@ const StyledSection = styled.section`
       rgba(0, 0, 0, 0) 60%,
       rgba(0, 0, 0, 0.8) 100%
     );
+  }
+
+  .featuredMovie-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    margin: 1rem auto;
+    z-index: 3;
+    text-align: center;
   }
 
   .featuredMovie-title {
@@ -88,6 +137,16 @@ const StyledSection = styled.section`
     font-size: 1rem;
   }
 
+  article {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
   .btn-secondary {
     background-color: rgba(51, 51, 51, 0.5);
     margin-right: 1rem;
@@ -101,7 +160,8 @@ const StyledSection = styled.section`
   }
 
   .featuredMovie-fade {
-    height: 7.4rem;
+    /* height: 7.4rem; */
+    height: 4.4rem;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -114,9 +174,23 @@ const StyledSection = styled.section`
     );
   }
 
+  article.activeSlide {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  article.lastSlide {
+    transform: translateX(-100%);
+  }
+
+  article.nextSlide {
+    transform: translateX(100%);
+  }
+
   @media screen and (min-width: 43em) {
     .featuredMovie-content {
       text-align: start;
+      align-items: flex-start;
     }
 
     .featuredMovie-title {

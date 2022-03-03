@@ -59,6 +59,7 @@ input, button, textarea, select {
     font-weight: 400;
   }
 
+
   @media screen and (min-width: 43em) {
     .btn-small  {
       padding: 0.25rem 1rem;
