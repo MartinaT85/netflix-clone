@@ -4,7 +4,7 @@ import styled from "styled-components";
 const FeaturedMovie = ({ movies }) => {
   const [index, setIndex] = useState(0);
 
-  console.log("Movies", movies);
+  // console.log("Movies", movies);
   function textLength(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + "..." : string;
   }

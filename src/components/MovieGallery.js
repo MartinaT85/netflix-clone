@@ -1,7 +1,6 @@
 import axios from "../utils/axios";
 import requests from "../utils/requests";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FeaturedMovie from "./FeaturedMovie";
 
 const MovieGallery = () => {
@@ -39,7 +38,7 @@ const MovieGallery = () => {
     fetchData();
   }, []);
 
-  console.log("MOVIE ARRAY", movies);
+  // console.log("MOVIE ARRAY", movies);
 
   return (
     <main className="movieGallery">
