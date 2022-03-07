@@ -1,11 +1,11 @@
 import axios from "../utils/axios";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import MovieCard from "./MovieCard";
 
 const SearchMovies = () => {
   const [moviesSearch, setMoviesSearch] = useState([]);
-  const [userQuery, setUserQuery] = useState("");
+  const [userQuery, setUserQuery] = useState("Hobbit");
   console.log("user query", userQuery);
 
   const fetchData = async (userQuery) => {
@@ -14,30 +14,12 @@ const SearchMovies = () => {
     );
 
     const arr = request?.data?.results;
-    if (arr) {
-      setMoviesSearch(arr);
-    }
+    request.data.results && setMoviesSearch(arr);
   };
 
   useEffect(() => {
-    // async function fetchData(query) {
-    //   try {
-    //     const request = await axios.get(
-    //       `/search/movie?api_key=${process.env.REACT_APP_MOVIE_API}&language=en-US&query=${query}&page=1&include_adult=false`
-    //     );
-    //     const arr = request.data.results;
-
-    //     if (request.data.results) {
-    //       setMoviesSearch(arr);
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // }
     fetchData(userQuery);
   }, [userQuery]);
-
-  console.log("USER QUERY", moviesSearch);
 
   return (
     <>
@@ -65,15 +47,21 @@ const StyledSection = styled.section`
   margin: 3rem auto;
   margin-top: 5rem;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
 
+  p {
+    border-bottom: 1px solid #fff;
+  }
+
   input {
-    width: 70%;
+    width: 60%;
     background-color: #000;
-    border: transparent;
+    border: none;
     border-bottom: 1px solid #fff;
     color: #fff;
     padding-left: 1rem;
+    cursor: pointer;
   }
 `;
 export default SearchMovies;

@@ -3,19 +3,7 @@ import styled from "styled-components";
 const MovieCard = ({ movieSearch }) => {
   console.log("props", movieSearch);
   return (
-    <StyledDiv
-      className="movieCard-wrapper"
-      // style={{
-      //   width: "90%",
-      //   margin: "0 auto",
-      //   marginBottom: "1rem",
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   paddingBottom: "2rem",
-      //   alignItems: "center",
-      //   gap: "2rem",
-      // }}
-    >
+    <StyledDiv className="movieCard-wrapper">
       <div className="movieImg-container">
         <img
           src={`https://image.tmdb.org/t/p/original/${
